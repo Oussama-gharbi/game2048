@@ -15,7 +15,7 @@ pipeline {
 
    stage('Sonarqube'){
     steps{
-    script{
+    withSonarQubeEnv('sonar-server') {
 sh 'sonar-scanner \
   -Dsonar.projectKey=game2048 \
   -Dsonar.sources=src/ \
