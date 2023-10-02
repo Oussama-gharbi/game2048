@@ -2,7 +2,9 @@ pipeline {
 
     agent{ 
       label 'jenkins-agent' }
-
+environment {
+        SCANNER_HOME=tool 'sonar-scanner'
+    }
   
 
     stages{
@@ -16,11 +18,11 @@ pipeline {
    stage('Sonarqube'){
     steps{
     withSonarQubeEnv('sonar-server') {
-sh 'sonar-scanner \
+sh '''$SCANNER_HOME/bin/sonar-scanner \
   -Dsonar.projectKey=game2048 \
   -Dsonar.sources=src/ \
   -Dsonar.host.url=http;//10.165.147.223:9000 \
-  -Dsonar.login=b431173bceb26d1d81d26354bf51fdf26f1d063a'
+  -Dsonar.login=b431173bceb26d1d81d26354bf51fdf26f1d063a'''
 }
 }
 }
