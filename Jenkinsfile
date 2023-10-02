@@ -1,9 +1,10 @@
-pipeline {
+
+    pipeline {
 
     agent{ 
       label 'jenkins-agent' }
 
-   
+  
 
     stages{
 
@@ -16,4 +17,7 @@ pipeline {
 
 }
     
+
+}
+
 
