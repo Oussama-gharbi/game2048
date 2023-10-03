@@ -21,8 +21,7 @@ environment {
 sh '''$SCANNER_HOME/bin/sonar-scanner -X \
   -Dsonar.projectKey=game2048 \
   -Dsonar.sources=src/ \
-  -Dsonar.host.url=http://10.165.147.223:9000 \
-  -Dsonar.login=b431173bceb26d1d81d26354bf51fdf26f1d063a'''
+  -Dsonar.host.url=http://10.165.147.223:9000 '''
 }
 }
 }
