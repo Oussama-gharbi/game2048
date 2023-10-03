@@ -15,17 +15,14 @@ environment {
              }
 	 }
 
-   stage('Sonarqube'){
-    steps{
-    withSonarQubeEnv('sonar-server') {
-sh '''$SCANNER_HOME/bin/sonar-scanner -X \
-  -Dsonar.projectKey=game2048 \
-  -Dsonar.sources=src/ '''
-}
-}
-}
-    
-
+   stage("Sonarqube Analysis "){
+            steps{
+                withSonarQubeEnv('sonar-server') {
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=game2048 \
+                    -Dsonar.projectKey=game2048 '''
+                }
+            }
+        }
 }
 }
 
