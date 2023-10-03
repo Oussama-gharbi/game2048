@@ -3,7 +3,7 @@ pipeline {
     agent{ 
       label 'jenkins-agent' }
   tools{
-        nodejs 'node16'
+        nodejs 'nodejs16'
     }
 environment {
         SCANNER_HOME=tool 'sonar-scanner'
