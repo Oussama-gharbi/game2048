@@ -20,8 +20,7 @@ environment {
     withSonarQubeEnv('sonar-server') {
 sh '''$SCANNER_HOME/bin/sonar-scanner -X \
   -Dsonar.projectKey=game2048 \
-  -Dsonar.sources=src/ \
-  -Dsonar.host.url=http://10.165.147.223:9000 '''
+  -Dsonar.sources=src/ '''
 }
 }
 }
