@@ -33,11 +33,11 @@ pipeline{
                 }
             } 
         }
-        stage('Install Dependencies') {
-            steps {
-                sh "npm install"
-            }
-        }
+       // stage('Install Dependencies') {
+        //    steps {
+         //       sh "npm install"
+         //   }
+       // }
         stage('OWASP FS SCAN') {
             steps {
                 dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
@@ -53,9 +53,9 @@ pipeline{
           steps{
 withDockerRegistry(credentialsId: 'docker-hub', toolName: 'docker') {
     sh ''' 
-    docker build -t 2048 
-    docker tag 2048 oussamagharbi/2048:latest 
-    docker push oussamagharbi/2048:latest '''
+    sudo docker build -t 2048 
+    sudo docker tag 2048 oussamagharbi/2048:latest 
+    sudo docker push oussamagharbi/2048:latest '''
               }
           }
 
