@@ -54,10 +54,11 @@ pipeline{
           steps{
 
     sh ''' 
+     docker build -t 2048 .
     echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
-    sudo docker build -t 2048 
-    sudo docker tag 2048 oussamagharbi/2048:latest 
-    sudo docker push oussamagharbi/2048:latest '''
+     //docker build -t 2048 
+     docker tag 2048 oussamagharbi/2048:latest 
+     docker push oussamagharbi/2048:latest '''
               
           }
 
