@@ -33,11 +33,11 @@ pipeline{
                 }
             } 
         }
-      //  stage('Install Dependencies') {
-       //     steps {
-      //          sh "npm install"
-      //      }
-      //  }
+        stage('Install Dependencies') {
+            steps {
+                sh "npm install"
+            }
+        }
         stage('OWASP FS SCAN') {
             steps {
                 dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
@@ -49,5 +49,27 @@ pipeline{
                 sh "trivy fs . > trivyfs.txt"
             }
         }
-    }
+        stage('Docker Build & Push'){
+          steps{
+withDockerRegistry(credentialsId: 'docker-hub', toolName: 'docker') {
+    sh ''' 
+    docker build -t 2048 
+    docker tag 2048 oussamagharbi/2048:latest 
+    docker push oussamagharbi/2048:latest '''
+              }
+          }
+
+        }
+
+stage('TRIVY'){
+          steps{
+  
+               sh "trivy image sevenajay/2048:latest > trivy.txt" 
+              }
+          }
+
+        }
+
+
 }
+
