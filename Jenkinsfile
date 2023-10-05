@@ -51,7 +51,7 @@ pipeline{
         }
         stage('Docker Build & Push'){
           steps{
-withDockerRegistry(credentialsId: 'docker-hub', toolName: 'docker') {
+withDockerRegistry(credentialsId: 'docker-hub') {
     sh ''' 
     sudo docker build -t 2048 
     sudo docker tag 2048 oussamagharbi/2048:latest 
