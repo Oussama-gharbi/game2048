@@ -52,13 +52,13 @@ pipeline{
         }
         stage('Docker Build & Push'){
           steps{
-withDockerRegistry(credentialsId: 'docker-hub') {
+
     sh ''' 
     echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
     sudo docker build -t 2048 
     sudo docker tag 2048 oussamagharbi/2048:latest 
     sudo docker push oussamagharbi/2048:latest '''
-              }
+              
           }
 
         }
