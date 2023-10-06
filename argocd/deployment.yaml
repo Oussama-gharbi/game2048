@@ -24,9 +24,11 @@ kind: Service
 metadata:
   name: react-app-service
 spec:
+  type: NodePort
   selector:
     app: react-app
   ports:
     - protocol: TCP
       port: 80  # The port exposed by the service within the cluster
       targetPort: 3000  # The port your React app is listening on inside the pod
+      nodePort: 30008
