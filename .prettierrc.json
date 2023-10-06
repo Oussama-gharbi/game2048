@@ -1,4 +1,5 @@
 {
+  "Kind": "PrettierOptions",
   "useTabs": false,
   "tabWidth": 2
 }
